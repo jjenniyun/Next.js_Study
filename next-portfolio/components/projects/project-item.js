@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 export default function ProjectItem({ data }) {
-    console.log('dbwhstls', data.cover.file?.url || data.cover.external.url);
+    //console.log('확인', data.cover.file?.url || data.cover.external.url);
     const title = data.properties.Name.title[0]?.plain_text;
     const github = data.properties.Github.url
     const youtube = data.properties.Youtube.url
