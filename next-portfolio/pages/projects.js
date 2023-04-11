@@ -38,10 +38,10 @@ export async function getStaticProps() {
     const options = {
         method: 'POST',
         headers: {
-            accept: 'application/json',
-            'Notion-Version': '2022-02-22',
+            'accept': 'application/json',
+            'Notion-Version': '2022-06-28',
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${TOKEN}`
+            'authorization': `Bearer ${TOKEN}`
         },
         body: JSON.stringify({
             sorts: [
@@ -57,22 +57,6 @@ export async function getStaticProps() {
     const res = await fetch(`https://api.notion.com/v1/databases/${DATABASE_ID}/query`, options)
 
     const projects = await res.json();
-
-    //console.log(projects);
-
-    const projectNames = projects.results && projects.results.map((aProject) => (
-        aProject.properties.Name.title[0].plain_text
-    ))
-
-    console.log(`projectNames : ${projectNames}`);
-
-    // const projectNames = projects.results && projects.results.map((aProject) => (
-    // aProject.id
-    // ))
-
-
-
-    // console.log(`projectName : ${projectNames}`);
 
     return {
         props: { projects }, // will be passed to the page component as props
